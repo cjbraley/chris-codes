@@ -1,19 +1,32 @@
+
 module.exports = {
-  siteMetadata: {
-    title: `ChrisCodes`,
-    siteUrl: `https://www.yourdomain.tld`
-  },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+    /* Your site config here */
+    siteMetadata: {
+        title: "Chris Codes",
+        description: "My Portfolio",
+        siteUrl: "https://www.chriscodes.com",
     },
-    __key: "images"
-  }]
+    plugins: [
+        "gatsby-plugin-sitemap",
+        {
+            resolve: "gatsby-plugin-react-svg",
+            options: {
+                rule: {
+                    include: /\.svg$/, // See below to configure properly
+                },
+            },
+        },
+        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-image`,
+        `gatsby-plugin-sharp`,
+        `gatsby-transformer-sharp`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/src/assets/images`,
+            },
+        },
+        `gatsby-plugin-react-helmet`,
+    ],
 };

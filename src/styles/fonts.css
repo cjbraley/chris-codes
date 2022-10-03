@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url("../assets/fonts/SFProText-Regular.ttf");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url("../assets/fonts/SFProText-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url("../assets/fonts/SFProText-Medium.ttf");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url("../assets/fonts/SFProText-Light.ttf");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Consolas';
+    src: url("../assets/fonts/Consolas-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Consolas';
+    src: url("../assets/fonts/Consolas-Italic.ttf");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Consolas';
+    src: url("../assets/fonts/Consolas-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Consolas';
+    src: url("../assets/fonts/Consolas-Bold-Italic.ttf");
+    font-weight: 700;
+    font-style: italic;
+}

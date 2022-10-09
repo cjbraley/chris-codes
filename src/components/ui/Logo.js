@@ -15,7 +15,6 @@ const Wrapper = styled.div`
     height: 4.5rem;
     .logo {
         height: 4.5rem;
-        margin-right: ${props => props.theme.spacing.xl};
         fill: ${props => props.theme.color.fontDark};
     }
 

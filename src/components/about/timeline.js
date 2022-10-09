@@ -9,89 +9,109 @@ const Timeline = ({ labels = [], activeIndex, clickHandler }) => {
     return (
         <Wrapper activeIndex={activeIndex} length={labels.length} isMiddle={isMiddle}>
             <div className="timeline">
-                <div className="line line--dashed" />
+                <div className="timeline__line timeline__line--dashed" />
                 {labels.map((date, i) => {
-                    return (
-                        <div key={i} className="section">
-                            <div className="timepoint">
-                                <p className={`label ${activeIndex === i ? "" : "hidden"}`}>
-                                    {date}
-                                </p>
-                                <div
-                                    className={`circle ${i === activeIndex ? "active" : ""}`}
-                                    onClick={() => clickHandler(i)}
-                                ></div>
-                            </div>
-                            {i !== labels.length - 1 && <div className="line" />}
-                        </div>
-                    );
+                    return [
+                        <div key={`timepoint-${i}`} className="timepoint">
+                            <p className={`label ${activeIndex === i ? "" : "hidden"}`}>{date}</p>
+                            <div
+                                className={`circle ${i === activeIndex ? "active" : ""}`}
+                                onClick={() => clickHandler(i)}
+                                onKeyDown={() => clickHandler(i)}
+                                tabIndex="0"
+                                role="button"
+                                aria-label="Set as active"
+                            ></div>
+                        </div>,
+                        <div
+                            key={`line-${i}`}
+                            className={`timeline__line ${
+                                i === labels.length - 1 ? "timeline__line--dashed" : ""
+                            }`}
+                        />,
+                    ];
                 })}
-                <div className="line line--dashed" />
             </div>
-            <div className="line-vertical line-1" />
-            <div className="line-horizontal line-2" />
-            <div className="line-vertical line-3" />
+            <div className="line-horizontal line-h1" />
+            <div className="line-vertical line-v1" />
+            <div className="line-horizontal line-h2" />
+            <div className="line-vertical line-v2" />
         </Wrapper>
     );
 };
 
 // timeline
-const lineHeight = 0.25; //rem
-const dashWidth = 1.5; // rem
-const dashGap = 0.25; //rem
-const dashTotal = dashWidth + dashGap;
-const dashedLineWidth = dashTotal * 2; // rem
-const dashXOffset = -0.5 * dashWidth; // rem
-const circleMargin = 0.25; //rem
-const circleWidth = 2;
 
-const fullLineWidth = (dashedLineWidth * 3) / 2;
+// sizes desktop
+const d_lineHeight = 0.225; //rem
+const d_dashWidth = 1.5; // rem
+const d_dashGap = 0.25; //rem
+const d_dashTotal = d_dashWidth + d_dashGap;
+const d_dashedLineWidth = d_dashTotal * 2; // rem
+const d_dashXOffset = -0.5 * d_dashWidth; // rem
+const d_circleMargin = 0.25; //rem
+const d_circleWidth = 2; // rem
+const d_fullLineWidth = (d_dashedLineWidth * 3) / 2;
 
-//lines below
-const baseXOffset = dashedLineWidth + circleWidth / 2 + circleMargin;
-const xOffset = index => baseXOffset + index * (fullLineWidth + circleWidth + circleMargin * 2);
+// offset
+const d_baseOffset = d_dashedLineWidth + d_circleWidth / 2 + d_circleMargin;
+const d_offset = index =>
+    d_baseOffset + index * (d_fullLineWidth + d_circleWidth + d_circleMargin * 2);
+
+// sizes mobile
+const m_lineHeight = 0.125; //rem
+const m_dashWidth = 0.75; // rem
+const m_dashGap = 0.125; //rem
+const m_dashTotal = m_dashWidth + m_dashGap;
+const m_circleMargin = 0.25; //rem
+const m_circleWidth = 2; // rem
+const m_dashedLineWidth = m_dashTotal * 2; // rem
+const m_dashXOffset = -0.5 * m_dashWidth; // rem
+const m_fullLineWidth = m_dashedLineWidth;
+
+// offset
+const m_baseOffset = m_dashedLineWidth + m_circleWidth / 2 + m_circleMargin;
+const m_offset = index =>
+    m_baseOffset + index * (m_fullLineWidth + m_circleWidth + m_circleMargin * 2);
 
 const Wrapper = styled.div`
+    position: relative;
     .timeline {
         display: flex;
-        .line {
-            width: ${(dashedLineWidth * 3) / 2}rem;
-            border-bottom: ${lineHeight}rem solid ${props => props.theme.color.fontMedium};
-            transform: translateY(calc(-1rem + ${lineHeight / 2}rem));
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: ${props => props.theme.spacing.l};
+        margin-right: 4rem;
+
+        &__line {
+            height: ${m_dashedLineWidth}rem;
+            border-left: ${m_lineHeight}rem solid ${props => props.theme.color.fontMedium};
         }
 
-        .line--dashed {
-            width: ${dashedLineWidth}rem;
+        &__line--dashed {
+            height: ${m_dashedLineWidth}rem;
+            width: ${m_lineHeight}rem;
             border: none;
             background-image: linear-gradient(
-                to right,
-                ${props => props.theme.color.fontMedium} ${(dashWidth / dashTotal) * 100}%,
+                ${props => props.theme.color.fontMedium} ${(m_dashWidth / m_dashTotal) * 100}%,
                 rgba(255, 255, 255, 0) 0%
             );
-            background-position: calc(${dashXOffset}rem) calc(100%); // stroke offset: ;
-            background-size: ${dashWidth + dashGap}rem ${lineHeight}rem; // stroke + gap width | height: ;
-            background-repeat: repeat-x;
-        }
-
-        .section {
-            display: flex;
+            background-position: 0 ${m_dashGap}rem; // stroke offset: ;
+            background-size: ${m_dashWidth}rem ${m_dashTotal}rem;
+            background-repeat: repeat-y;
+            transform: translateX(0);
         }
 
         .timepoint {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             position: relative;
-            padding-top: 2rem;
 
             .circle {
                 cursor: pointer;
-                height: ${circleWidth}rem;
-                width: ${circleWidth}rem;
+                height: ${m_circleWidth}rem;
+                width: ${m_circleWidth}rem;
                 border-radius: 50%;
-                border: ${lineHeight}rem solid ${props => props.theme.color.primary};
-                margin: 0 ${circleMargin}rem;
+                border: 3px solid ${props => props.theme.color.primary};
+                margin: ${m_circleMargin}rem 0;
                 transition: all 0.5s ease;
 
                 &:hover {
@@ -107,9 +127,9 @@ const Wrapper = styled.div`
             .label {
                 min-width: max-content;
                 position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
+                top: 50%;
+                left: -${props => props.theme.spacing.s};
+                transform: translate(-100%, -50%);
                 transition: all 0.5s ease;
                 &.hidden {
                     color: ${props => props.theme.color.backgroundLight};
@@ -118,61 +138,120 @@ const Wrapper = styled.div`
         }
     }
 
-    .line-vertical {
-        opacity: 50%;
-        width: ${props => props.theme.line.dashWidth}px;
-
-        /*Vertical*/
-        background-image: linear-gradient(
-            ${props => props.theme.color.fontSubtle}
-                ${props => (props.theme.line.dashLength / props.theme.line.dashTotal) * 100}%,
-            rgba(255, 255, 255, 0) 0%
-        );
-        background-position: 0 ${props => props.theme.line.dashWidth}px;
-        background-size: ${props => props.theme.line.dashWidth}px
-            ${props => props.theme.line.dashTotal}px;
-        background-repeat: repeat-y;
-        transform: translateX(-50%);
+    .line-h1 {
+        position: absolute;
+        left: calc(50% - 1.75rem + ${m_circleWidth / 2}rem);
+        width: 4rem;
+        top: ${props => m_offset(props.activeIndex)}rem;
     }
 
-    .line-1 {
-        height: ${props =>
-            props.isMiddle
-                ? `calc(${props.theme.line.dashTotal * 6}px + ${props.theme.line.dashWidth}px)`
-                : `${props.theme.line.dashTotal * 4}px`};
-        margin-left: ${props => xOffset(props.activeIndex)}rem;
+    .line-v1 {
+        position: absolute;
+        left: calc(50% - 1.75rem + ${m_circleWidth / 2}rem + 4rem);
+        top: ${props => m_offset(props.activeIndex)}rem;
+        height: calc(100% - ${props => m_offset(props.activeIndex)}rem - 2rem);
     }
 
-    .line-3 {
-        display: ${props => (props.isMiddle ? "none" : "block")};
-        height: ${props => props.theme.line.dashTotal * 2}px;
-        margin-left: auto;
-        margin-right: auto;
+    .line-h2 {
+        position: absolute;
+        left: calc(50%);
+        width: calc(${m_circleWidth / 2}rem + 4rem - 1.75rem);
     }
 
-    .line-horizontal {
-        opacity: 50%;
-        height: ${props => props.theme.line.dashWidth}px;
-        background-image: linear-gradient(
-            to right,
-            ${props => props.theme.color.fontSubtle} 80%,
-            rgba(255, 255, 255, 0) 0%
-        );
-        background-position: 0px 0px;
-        background-size: 0.75rem 2px; // stroke + gap width | height: ;
-        background-repeat: repeat-x;
+    .line-v2 {
+        height: 2rem;
+        margin-left: calc(50%);
     }
 
-    .line-2 {
-        display: ${props => (props.isMiddle ? "none" : "block")};
-        margin-left: ${props =>
-            props.activeIndex + 1 <= props.length / 2
-                ? `calc(${xOffset(props.activeIndex)}rem - 1px)`
-                : `calc(50% - 1px)`};
-        width: ${props =>
-            props.activeIndex + 1 <= props.length / 2
-                ? `calc(50% - ${xOffset(props.activeIndex)}rem + 2px)`
-                : `calc(${xOffset(props.activeIndex)}rem - 50% + 2px)`};
+    @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
+        .timeline {
+            flex-direction: row;
+            margin-bottom: ${props => props.theme.spacing.xs};
+
+            .timepoint {
+                .circle {
+                    border-width: 3px;
+                    margin: 0 ${d_circleMargin}rem;
+
+                    &:hover {
+                        background-color: ${props => props.theme.color.primaryDark};
+                    }
+                }
+
+                .active {
+                    border-color: ${props => props.theme.color.primary};
+                    background-color: ${props => props.theme.color.primaryDark};
+                }
+
+                .label {
+                    min-width: max-content;
+                    position: absolute;
+                    top: -1.75rem;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: all 0.5s ease;
+                    &.hidden {
+                        color: ${props => props.theme.color.backgroundLight};
+                    }
+                }
+            }
+
+            &__line {
+                height: ${d_lineHeight}rem;
+                width: ${(d_dashedLineWidth * 3) / 2}rem;
+                border-bottom: ${d_lineHeight}rem solid ${props => props.theme.color.fontMedium};
+                transform: none;
+            }
+
+            &__line--dashed {
+                width: ${d_dashedLineWidth}rem;
+                border: none;
+                background-image: linear-gradient(
+                    to right,
+                    ${props => props.theme.color.fontMedium} ${(d_dashWidth / d_dashTotal) * 100}%,
+                    rgba(255, 255, 255, 0) 0%
+                );
+                background-position: calc(${d_dashXOffset}rem) calc(100%); // stroke offset: ;
+                background-size: ${d_dashWidth + d_dashGap}rem ${d_lineHeight}rem; // stroke + gap width | height: ;
+                background-repeat: repeat-x;
+            }
+        }
+
+        .line-h1 {
+            display: none;
+        }
+
+        .line-v1 {
+            position: initial;
+            left: 0;
+            height: ${props =>
+                props.isMiddle
+                    ? `calc(${props.theme.line.dashTotal * 6}px + ${props.theme.line.dashWidth}px)`
+                    : `${props.theme.line.dashTotal * 4}px`};
+            margin-left: ${props => d_offset(props.activeIndex)}rem;
+        }
+
+        .line-v2 {
+            position: initial;
+            left: 0;
+            display: ${props => (props.isMiddle ? "none" : "block")};
+            height: ${props => props.theme.line.dashTotal * 2}px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .line-h2 {
+            position: initial;
+            display: ${props => (props.isMiddle ? "none" : "block")};
+            margin-left: ${props =>
+                props.activeIndex + 1 <= props.length / 2
+                    ? `calc(${d_offset(props.activeIndex)}rem - 1px)`
+                    : `calc(50% - 1px)`};
+            width: ${props =>
+                props.activeIndex + 1 <= props.length / 2
+                    ? `calc(50% - ${d_offset(props.activeIndex)}rem + 2px)`
+                    : `calc(${d_offset(props.activeIndex)}rem - 50% + 2px)`};
+        }
     }
 `;
 

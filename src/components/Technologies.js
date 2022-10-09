@@ -51,19 +51,24 @@ const Technologies = () => {
     const [activeBadgeIndex, setActiveBadgeIndex] = useState(0);
 
     return (
-        <Wrapper color={badges[activeBadgeIndex].color}>
-            <div class="anchor" id="technologies"></div>
+        <Wrapper color={badges[activeBadgeIndex].color} className="page-section">
+            <div className="anchor" id="technologies"></div>
             <div className="content">
-                <div className="section-header">
+                <div className="page-section__header">
                     <h2 className="title">Technologies</h2>
-                    <div className="text--large subtitle">Some of my favourite tools</div>
+                    <div className="text--large page-section__header__subtitle">
+                        Some of my favourite tools
+                    </div>
                 </div>
-                <div className="container">
+                <div className="badge-container">
                     {badges.map((badge, i) => (
                         <div
                             key={i}
-                            className={`badge-container  ${activeBadgeIndex === i ? "active" : ""}`}
+                            className={`badge-box  ${activeBadgeIndex === i ? "active" : ""}`}
                             onClick={() => setActiveBadgeIndex(i)}
+                            onKeyDown={() => setActiveBadgeIndex(i)}
+                            tabIndex="0"
+                            role="button"
                         >
                             <div className={`badge badge--${badge.color}`}>{badge.icon}</div>
                         </div>
@@ -210,84 +215,65 @@ const Wrapper = styled.div`
         const colorKey = `${props.color}Background`;
         return props.theme.color[colorKey];
     }};
-    padding-top: ${props => props.theme.spacing.xl};
     padding-bottom: ${props => props.theme.spacing.xl};
 
-    .section-header {
-        margin-bottom: ${props => props.theme.spacing.l};
-    }
-    .container {
-        width: 32rem;
-        margin-left: auto;
-        margin-right: auto;
+    .badge-container {
         display: flex;
         justify-content: space-around;
         margin-bottom: ${props => props.theme.spacing.l};
-    }
 
-    .badge-container {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        height: 6rem;
-        width: 6rem;
-
-        .badge {
+        .badge-box {
+            cursor: pointer;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 5rem;
-            width: 5rem;
-            background: ${props => props.theme.color.primary};
-            box-shadow: 4px -5px 0px ${props => props.theme.color.primaryDark};
-            border-radius: 16px;
-            transition: all 0.25s ease;
+            height: 4.75rem;
+            width: 4.75rem;
 
-            .icon {
-                height: 3rem;
+            .badge {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 4rem;
+                width: 4rem;
+                background: ${props => props.theme.color.primary};
+                box-shadow: 3px -3px 0px ${props => props.theme.color.primaryDark};
+                border-radius: 16px;
                 transition: all 0.25s ease;
-            }
-        }
 
-        &:hover {
-            .badge {
-                height: 5.5rem;
-                width: 5.5rem;
                 .icon {
-                    height: 3.3rem;
-                    width: 3.3rem;
+                    height: 2.5rem;
+                    transition: all 0.25s ease;
                 }
             }
-        }
 
-        &.active {
-            .badge {
-                height: 6rem;
-                width: 6rem;
-                .icon {
-                    height: 3.6rem;
-                    width: 3.6rem;
+            &.active {
+                .badge {
+                    height: 4.75rem;
+                    width: 4.75rem;
+                    .icon {
+                        height: 3rem;
+                        width: 3rem;
+                    }
                 }
             }
-        }
 
-        .badge--secondary {
-            background: ${props => props.theme.color.secondary};
-            box-shadow: 4px -5px 0px ${props => props.theme.color.secondaryDark};
-        }
+            .badge--secondary {
+                background: ${props => props.theme.color.secondary};
+                box-shadow: 3px -3px 0px ${props => props.theme.color.secondaryDark};
+            }
 
-        .badge--tertiary {
-            background: ${props => props.theme.color.tertiary};
-            box-shadow: 4px -5px 0px ${props => props.theme.color.tertiaryDark};
+            .badge--tertiary {
+                background: ${props => props.theme.color.tertiary};
+                box-shadow: 3px -3px 0px ${props => props.theme.color.tertiaryDark};
+            }
         }
     }
 
     .description-container {
-        max-width: 40rem;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: ${props => props.theme.spacing.l};
+        margin-bottom: ${props => props.theme.spacing.xl};
 
         .group-title {
             margin-bottom: ${props => props.theme.spacing.s};
@@ -311,62 +297,61 @@ const Wrapper = styled.div`
     }
 
     .canvas {
-        width: 40rem;
-        height: 38rem;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        margin-top: ${props => props.theme.spacing.xl};
+        margin-bottom: ${props => props.theme.spacing.xl};
+
+        &-row {
+            .group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: ${props => props.theme.spacing.l};
+
+                .group-row {
+                    display: flex;
+                    justify-content: space-around;
+                    min-width: 50%;
+                    align-items: flex-end;
+                    gap: ${props => props.theme.spacing.s};
+                    margin-bottom: ${props => props.theme.spacing.m};
+                }
+
+                .title {
+                    display: none;
+                    margin-bottom: ${props => props.theme.spacing.m};
+                }
+
+                .subtitle {
+                    color: ${props => props.theme.color.fontMedium};
+                    text-align: center;
+                    margin-bottom: ${props => props.theme.spacing.l};
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+
+                .group:last-of-type {
+                    margin-bottom: 0;
+
+                    .subtitle {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
 
         .icon {
             height: 3rem;
             max-width: 6rem;
-            transition: all 0.25s ease;
+            transition: all 0.375s ease;
 
             &:hover {
                 transform: translateY(-6px);
             }
-        }
-
-        .canvas-row {
-            display: flex;
-            justify-content: center;
-            gap: ${props => props.theme.spacing.xl};
-            margin-bottom: ${props => props.theme.spacing.xl};
-        }
-
-        .group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 17rem;
-
-            .group-row {
-                display: flex;
-                /* width: 100%; */
-                min-width: 11rem;
-                justify-content: center;
-                justify-content: space-around;
-                align-items: flex-end;
-                gap: ${props => props.theme.spacing.m};
-                margin-bottom: ${props => props.theme.spacing.m};
-            }
-
-            .title {
-                margin-bottom: ${props => props.theme.spacing.m};
-            }
-
-            .subtitle {
-                color: ${props => props.theme.color.fontMedium};
-                margin-bottom: ${props => props.theme.spacing.l};
-                text-align: center;
-            }
-        }
-
-        .no-margin-btm {
-            margin-bottom: 0;
         }
 
         .javascript {
@@ -378,6 +363,71 @@ const Wrapper = styled.div`
         }
         .bitbucket {
             margin-bottom: ${props => props.theme.spacing.m};
+        }
+    }
+
+    @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
+        .badge-container {
+            width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+
+            .badge-box {
+                height: 6rem;
+                width: 6rem;
+            }
+
+            .badge {
+                height: 5rem;
+                width: 5rem;
+
+                .icon {
+                    height: 3rem;
+                }
+            }
+        }
+
+        .description-container {
+            width: 40rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .canvas {
+            width: 40rem;
+            height: 34rem;
+            margin-left: auto;
+            margin-right: auto;
+
+            .canvas-row {
+                display: flex;
+                justify-content: center;
+                gap: ${props => props.theme.spacing.xl};
+                margin-bottom: ${props => props.theme.spacing.xl};
+
+                .group {
+                    width: 17rem;
+                    margin-bottom: 0;
+                }
+
+                .group-row {
+                    min-width: 11rem;
+                    margin-bottom: ${props => props.theme.spacing.m};
+                }
+
+                .title {
+                    display: block;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                    .group {
+                        .subtitle {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
         }
 
         .express {

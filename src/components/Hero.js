@@ -10,8 +10,7 @@ import LinkedInIcon from "../assets/icons/linkedin.svg";
 const Hero = () => {
     return (
         <Wrapper>
-            <div class="anchor" id="hero"></div>
-
+            <div className="anchor" id="hero"></div>
             <div className="content">
                 <div className="hero">
                     <div className="hero__info typewriter">
@@ -21,10 +20,10 @@ const Hero = () => {
                             passion for clean code and great user experiences. Check out my projects
                             below.
                         </div>
-                        <div className="link-container">
-                            <Link to="/contact">
-                                <Button color="tertiary">CONTACT</Button>
-                            </Link>
+                    </div>
+                    <DeskIcon className="hero__desk" />
+                    <div className="hero__links">
+                        <div className="icon-container">
                             <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
                                 <GithubIcon className="icon" />
                             </a>
@@ -36,8 +35,10 @@ const Hero = () => {
                                 <LinkedInIcon className="icon" />
                             </a>
                         </div>
+                        <Link to="/contact">
+                            <Button color="tertiary">CONTACT</Button>
+                        </Link>
                     </div>
-                    <DeskIcon className="hero__desk" />
                 </div>
 
                 <div className="hero-rect-1"></div>
@@ -48,57 +49,64 @@ const Hero = () => {
 };
 
 const Wrapper = styled.div`
-    left: 0px;
-    right: 0px;
-    top: 0px;
     position: relative;
 
     background: ${props => props.theme.color.primaryBackground};
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
-    /* border-bottom-right-radius: 4rem; */
+
+    padding-top: ${props => props.theme.spacing.xl};
+    padding-bottom: ${props => props.theme.spacing.xxl};
 
     .hero {
-        display: flex;
-        width: 100%;
+        display:flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
         gap: ${props => props.theme.spacing.xl};
+        text-align: center;
 
         &__info {
+            grid-area: info;
             display: flex;
             flex-direction: column;
             gap: ${props => props.theme.spacing.s};
-            width: 40rem;
-            padding-bottom: 12rem;
-            padding-top: 8.5rem;
 
             .text {
                 color: ${props => props.theme.color.fontMedium};
             }
+        }
 
-            .link-container {
+        &__links {
+                grid-area: links;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 gap: ${props => props.theme.spacing.s};
 
-                .icon {
-                    height: ${props => props.theme.spacing.l};
+                .icon-container{
+                    
+                    display: flex;
+                    gap: ${props => props.theme.spacing.m};
+                    
+                    .icon {
+                        height: ${props => props.theme.spacing.l};
+    
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                }
 
-                    &:hover {
-                        opacity: 0.7;
-                    }
                 }
             }
-        }
 
         &__desk {
-            height: 24rem;
+            grid-area: desk;
+            width: 80%;
         }
     }
 
     .hero-rect-1 {
         position: absolute;
-        width: calc((100% - 1200px) / 2 + 7.5rem);
+        width: 33.33%;
         height: 1rem;
         left: 0px;
         bottom: 1rem;
@@ -107,11 +115,68 @@ const Wrapper = styled.div`
 
     .hero-rect-2 {
         position: absolute;
-        width: calc((100% - 1200px) / 2 + 15rem);
+        width: 66.67%;
         height: 1rem;
         left: 0px;
         bottom: 0rem;
         background: ${props => props.theme.color.primary};
+    }
+
+    @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
+    }
+
+    @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+
+        .hero {
+            /* display: grid;
+            grid-template-areas: 
+            "info desk"
+            "links desk";
+            grid-template-columns: 40rem 1fr;
+            grid-template-rows: auto 1fr; */
+            position: relative;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: ${props => props.theme.spacing.m};
+
+            text-align: left;
+
+
+
+            &__info {
+                width: 40rem;
+
+            }
+
+            &__desk {
+                width: calc(100% - 42rem);
+                max-height: 24rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0rem;
+            }
+
+        &__links {
+            flex-direction: row;
+            justify-content: flex-start; 
+            gap: ${props => props.theme.spacing.s};
+
+            .icon-container{
+                order: 2;
+                gap: ${props => props.theme.spacing.s};
+            }
+        }
+    }
+
+    .hero-rect-1 {
+        width: calc((100% - 1200px) / 2 + 7.5rem);
+    }
+
+    .hero-rect-2 {
+        width: calc((100% - 1200px) / 2 + 15rem);
     }
 `;
 

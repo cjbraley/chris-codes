@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Menu from "./Menu";
 
 const Layout = ({ children }) => {
     return (

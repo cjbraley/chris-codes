@@ -1,7 +1,7 @@
 const theme = {
     breakpoint: {
-        tablet: "650px",
-        desktop: "1200px",
+        tablet: 650,
+        desktop: 1040,
     },
     position: {
         navHeight: "5.25rem",
@@ -50,10 +50,10 @@ const theme = {
                 xs: "0.75rem",
                 s: "0.875rem",
                 m: "1rem",
-                l: "1.375rem",
+                l: "1.125rem",
                 xl: "1.5rem",
-                xxl: "2.5rem",
-                xxxl: "4rem",
+                xxl: "1.755",
+                xxxl: "2rem",
             },
         },
     },

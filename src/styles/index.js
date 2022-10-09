@@ -65,6 +65,10 @@ const Global = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         color: ${props => props.theme.color.fontDark};
         background-color: ${props => props.theme.color.backgroundLight};
+
+        &.no-scroll {
+            overflow: hidden;
+        }
     }
 
 
@@ -183,16 +187,24 @@ const Global = createGlobalStyle`
         padding-right: ${props => props.theme.spacing.l};
     }
 
-    .section-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: ${props => props.theme.spacing.xs};
+    .page-section {
+        padding-top: ${props => props.theme.spacing.xl};
+        padding-bottom: ${props => props.theme.spacing.xl};
 
-        .subtitle {
-            color: ${props => props.theme.color.fontMedium};
+        &__header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: ${props => props.theme.spacing.xs};
+            margin-bottom: ${props => props.theme.spacing.l};
+
+            &__subtitle {
+                color: ${props => props.theme.color.fontMedium};
+            }
         }
     }
+
+
 
     .line-vertical {
         opacity: 50%;
@@ -222,67 +234,68 @@ const Global = createGlobalStyle`
         background-position: 0px 0px;
         background-size: 0.75rem 2px; // stroke + gap width | height: ;
         background-repeat: repeat-x;
+    }
 
 
 
-    @media (min-width: ${props => props.theme.breakpoint.tablet}) {
+    @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
 
         
     }
-
-    @media (min-width: ${props => props.theme.breakpoint.desktop}) {
+    
+    @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
 
             // fonts
       
-    h1 {
-        font-size: ${props => props.theme.font.size.mobile.xxxl};
-    }
+        h1 {
+            font-size: ${props => props.theme.font.size.desktop.xxxl};
+        }
 
-    h2 {
-        font-size: ${props => props.theme.font.size.desktop.xxl};
-    }
+        h2 {
+            font-size: ${props => props.theme.font.size.desktop.xxl};
+        }
 
-    h3 {
-        font-size: ${props => props.theme.font.size.desktop.xl};
-    }
+        h3 {
+            font-size: ${props => props.theme.font.size.desktop.xl};
+        }
 
-    h4{
-        font-size: ${props => props.theme.font.size.desktop.l};
-    }
+        h4{
+            font-size: ${props => props.theme.font.size.desktop.l};
+        }
 
-    h5{
-        font-size: 1.125rem;
-    }
+        h5{
+            font-size: 1.125rem;
+        }
 
-    h6{
-        font-size: ${props => props.theme.font.size.desktop.s};
-    }
+        h6{
+            font-size: ${props => props.theme.font.size.desktop.s};
+        }
 
-    
-    p {
-        font-size: ${props => props.theme.font.size.desktop.m};
-    }
+        
+        p {
+            font-size: ${props => props.theme.font.size.desktop.m};
+        }
 
-    .text--large{
-        font-size: ${props => props.theme.font.size.desktop.l};
-    } 
+        .text--large{
+            font-size: ${props => props.theme.font.size.desktop.l};
+        } 
 
-    .text--small {
-        font-size: ${props => props.theme.font.size.desktop.m};
-    }
+        .text--small {
+            font-size: ${props => props.theme.font.size.desktop.m};
+        }
 
-    .text--link {
-        font-size: ${props => props.theme.font.size.desktop.m};
-    }
+        .text--link {
+            font-size: ${props => props.theme.font.size.desktop.m};
+        }
 
 
-    .text--footnote {
-        font-size: ${props => props.theme.font.size.desktop.m};
-    }
+        .text--footnote {
+            font-size: ${props => props.theme.font.size.desktop.m};
+        }
 
-    .text--button {
-        font-size: ${props => props.theme.font.size.desktop.m}
-    }
+        .text--button {
+            font-size: ${props => props.theme.font.size.desktop.m}
+        }
 
     }
 

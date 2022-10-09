@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 import Logo from "./Logo";
+
+import { useWindowSize } from "../../use/useWindowSize";
 
 import LinkedInIcon from "../../assets/icons/linkedin-outline.svg";
 import GithubIcon from "../../assets/icons/github-outline.svg";
@@ -10,17 +12,23 @@ import CaretIcon from "../../assets/icons/caret-up.svg";
 import { Link } from "gatsby";
 
 const Footer = () => {
+    const { width } = useWindowSize();
+    const theme = useTheme();
     return (
         <Wrapper>
             <div className="content">
-                <div className="logo">
-                    <Logo alt />
-                </div>
-                <div className="return-circle">
-                    <Link to="/#hero">
-                        <CaretIcon className="caret" />
-                    </Link>
-                </div>
+                {width >= theme.breakpoint.desktop && (
+                    <div className="logo">
+                        <Logo alt />
+                    </div>
+                )}
+                {width >= theme.breakpoint.desktop && (
+                    <div className="return-circle">
+                        <Link to="/#hero">
+                            <CaretIcon className="caret" />
+                        </Link>
+                    </div>
+                )}
                 <div className="container">
                     <div className="icon-container">
                         <a

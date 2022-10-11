@@ -12,7 +12,7 @@ import Typescript from "../assets/icons/typescript.svg";
 import ReactIcon from "../assets/icons/react-icon.svg";
 import Gatsby from "../assets/icons/gatsby.svg";
 import Vue from "../assets/icons/vue.svg";
-import Nuxt from "../assets/icons/Nuxt.svg";
+import Nuxt from "../assets/icons/nuxt.svg";
 import Node from "../assets/icons/nodejs.svg";
 import Express from "../assets/icons/express.svg";
 import Mocha from "../assets/icons/mocha.svg";

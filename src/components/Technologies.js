@@ -55,7 +55,7 @@ const Technologies = () => {
             <div className="anchor" id="technologies"></div>
             <div className="content">
                 <div className="page-section__header">
-                    <h2 className="title">Technologies</h2>
+                    <h2 className="page-section__header__title">Technologies</h2>
                     <div className="text--large page-section__header__subtitle">
                         Some of my favourite tools
                     </div>

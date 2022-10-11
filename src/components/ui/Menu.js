@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "gatsby";
 import styled, { useTheme } from "styled-components";
-import { navItems } from "../../data/general-config";
+import { navItems } from "../../data/config";
 import { useOnClickOutside } from "../../use/useOnClickOutside";
 
 import Footer from "./Footer";

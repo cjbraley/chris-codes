@@ -46,19 +46,10 @@ const StyledButton = styled.button`
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
-
-
             // background
             ${props => {
-                if (props.transparent) return;
-                const color = `${props.color}Dark`;
+                const color = props.transparent ? `${props.color}Subtle` : `${props.color}Dark`;
                 return `background-color: ${props.theme.color[color]};}`;
-            }}
-            // text + border
-            ${props => {
-                if (!props.transparent) return;
-                const color = `${props.color}Dark`;
-                return `color: ${props.theme.color[color]};border-color: ${props.theme.color[color]};}`;
             }}
     }
 `;

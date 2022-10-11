@@ -22,6 +22,10 @@ const theme = {
         secondaryBackground: "#f3fff5",
         tertiaryBackground: "#fff7f3",
 
+        primarySubtle: "#e6eeff",
+        secondarySubtle: "#e4f4e8",
+        tertiarySubtle: "#feeaeb",
+
         primaryDark: "#688CD8",
         secondaryDark: "#58A76E",
         tertiaryDark: "#D86854",

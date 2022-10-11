@@ -31,8 +31,10 @@ const Projects = () => {
             <div className="anchor" id="projects"></div>
             <div className="content">
                 <div className="page-section__header">
-                    <h2 className="title">Projects</h2>
-                    <div className="text--large subtitle">Some things I've built</div>
+                    <h2 className="page-section__header__title">Projects</h2>
+                    <div className="text--large page-section__header__subtitle">
+                        Some things I've built
+                    </div>
                 </div>
 
                 <div className="lines--first">

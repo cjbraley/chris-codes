@@ -7,14 +7,16 @@ import Timeline from "./about/timeline";
 import Experience from "./about/experience";
 
 const About = () => {
-    const [activeExperienceIndex, setActiveExperienceIndex] = useState(0);
+    const [activeExperienceIndex, setActiveExperienceIndex] = useState(experienceData.length - 1);
     return (
         <Wrapper className="page-section">
             <div className="anchor" id="about"></div>
             <div className="content">
                 <div className="page-section__header">
-                    <h2 className="title">About</h2>
-                    <div className="text--large subtitle">A little about me</div>
+                    <h2 className="page-section__header__title">About</h2>
+                    <div className="text--large page-section__header__subtitle">
+                        A little about me
+                    </div>
                 </div>
                 <p className="description">
                     I’m an enthusiastic and technically inclined BI Developer with extensive
@@ -65,9 +67,6 @@ const Wrapper = styled.div`
         .description {
             max-width: 38rem;
             margin-bottom: ${props => props.theme.spacing.xxl};
-        }
-        .experience-container {
-            height: 42rem;
         }
     }
 `;

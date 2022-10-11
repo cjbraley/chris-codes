@@ -23,11 +23,11 @@ const Footer = () => {
                     </div>
                 )}
                 {width >= theme.breakpoint.desktop && (
-                    <div className="return-circle">
-                        <Link to="/#hero">
+                    <Link to="/#hero">
+                        <div className="return-circle">
                             <CaretIcon className="caret" />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 )}
                 <div className="container">
                     <div className="icon-container">
@@ -82,16 +82,21 @@ const Wrapper = styled.footer`
         width: 3rem;
         border-radius: 50%;
         background-color: ${props => props.theme.color.tertiary};
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border: 1px solid ${props => props.theme.color.tertiaryDark};
+
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
 
         &:hover {
             background-color: ${props => props.theme.color.tertiaryDark};
         }
 
         .caret {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
             height: 1.125rem;
         }
     }

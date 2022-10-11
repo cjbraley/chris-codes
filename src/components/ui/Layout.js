@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     return (
         <Main>
             <Navbar />
-            {children}
+            <div className="children">{children}</div>
             <Footer />
         </Main>
     );
@@ -22,4 +22,8 @@ const Main = styled.main`
     display: flex;
     flex-direction: column;
     z-index: 1;
+
+    .children {
+        flex-grow: 1;
+    }
 `;

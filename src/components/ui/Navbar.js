@@ -8,6 +8,8 @@ import Logo from "./Logo";
 import { useWindowSize } from "../../use/useWindowSize";
 import { useScrollDirection } from "../../use/useScrollDirection";
 
+import { navItems } from "../../data/config";
+
 const Navbar = () => {
     const { width } = useWindowSize();
     const theme = useTheme();
@@ -49,21 +51,15 @@ const Navbar = () => {
                         )}
                         {width >= theme.breakpoint.desktop && (
                             <div className="navbar-links">
-                                <Link className="navbar-item text--link" to="/">
-                                    Home
-                                </Link>
-                                <Link className="navbar-item text--link" to="/#projects">
-                                    Projects
-                                </Link>
-                                <Link className="navbar-item text--link" to="/#technologies">
-                                    Technologies
-                                </Link>
-                                <Link className="navbar-item text--link" to="/#about">
-                                    About
-                                </Link>
-                                <Link className="navbar-item text--link" to="/contact">
-                                    Contact
-                                </Link>
+                                {navItems.map(item => (
+                                    <Link
+                                        key={item.name}
+                                        className="navbar-item text--link"
+                                        to={item.to}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ))}
                             </div>
                         )}
                         <div className="navbar-logo">

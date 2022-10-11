@@ -35,9 +35,14 @@ const Hero = () => {
                                 <LinkedInIcon className="icon" />
                             </a>
                         </div>
-                        <Link to="/contact">
+                        <a
+                            className="btn"
+                            href="mailto:cbraley@protonmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <Button color="tertiary">CONTACT</Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
 

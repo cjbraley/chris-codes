@@ -11,17 +11,9 @@ const Experience = ({
     technologies,
     color,
 }) => {
-    const [isClosed, setIsClosed] = useState(false);
-    useEffect(() => {
-        setIsClosed(true);
-        setTimeout(() => {
-            setIsClosed(false);
-        }, 750);
-    }, [position]);
-    console.log(position);
     return (
         <Wrapper color={color}>
-            <div className={`container ${isClosed ? "closed" : ""}`}>
+            <div className="container">
                 <div className="header">
                     <a href={link} target="_blank" rel="noreferrer" className="header__link">
                         <Logo className="logo" />
@@ -169,6 +161,15 @@ const Wrapper = styled.div`
                 text-align: left;
                 flex-direction: row;
                 justify-content: space-between;
+
+
+                &__text {
+                    order: 1;
+                }
+
+                &__link {
+                    order: 2;
+                }
             }
 
             .sub-header {

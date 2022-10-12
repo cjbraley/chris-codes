@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { useTheme } from "styled-components";
+import { Link } from "gatsby";
 
 import Logo from "./Logo";
 
@@ -9,7 +10,6 @@ import LinkedInIcon from "../../assets/icons/linkedin-outline.svg";
 import GithubIcon from "../../assets/icons/github-outline.svg";
 import EmailIcon from "../../assets/icons/email.svg";
 import CaretIcon from "../../assets/icons/caret-up.svg";
-import { Link } from "gatsby";
 
 const Footer = () => {
     const { width } = useWindowSize();
@@ -18,12 +18,12 @@ const Footer = () => {
         <Wrapper>
             <div className="content">
                 {width >= theme.breakpoint.desktop && (
-                    <div className="logo">
+                    <Link className="logo" to="/">
                         <Logo alt />
-                    </div>
+                    </Link>
                 )}
                 {width >= theme.breakpoint.desktop && (
-                    <Link to="/#hero">
+                    <Link to="/">
                         <div className="return-circle">
                             <CaretIcon className="caret" />
                         </div>

@@ -1,10 +1,11 @@
-
 module.exports = {
     /* Your site config here */
     siteMetadata: {
         title: "Chris Codes",
-        description: "My Portfolio",
-        siteUrl: "https://www.chriscodes.com",
+        description:
+            "I’m a full stack web developer and coffee enthusiast (addict?). I have a passion for clean code and great user experiences.",
+        siteUrl: "https://www.chriscodes.com.au",
+        image: "/og-image.png",
     },
     plugins: [
         "gatsby-plugin-sitemap",

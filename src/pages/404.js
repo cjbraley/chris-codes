@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
+import SEO from "../components/seo/SEO";
 import Button from "../components/general/Button";
 
 const NotFoundPage = () => {
     return (
         <Wrapper className="page-section">
+            <SEO title="Page Not Found" description="This page doesn't exist." />
             <div className="anchor" id="contact"></div>
             <div className="content">
                 <div className="page-section__header">

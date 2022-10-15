@@ -36,13 +36,16 @@ const Menu = ({ showMenu, setShowMenu }) => {
                 <div
                     className="ham-box"
                     onClick={() => setShowMenu(!showMenu)}
+                    onKeyDown={() => setShowMenu(!showMenu)}
                     showMenu={showMenu}
                     aria-label="Menu"
+                    role="button"
+                    tabIndex={showMenu ? 0 : -1}
                 >
                     <div className="ham-box-inner" />
                 </div>
 
-                <div className="menu" aria-hidden={!showMenu} tabIndex={showMenu ? 0 : -1}>
+                <div className="menu" aria-hidden={!showMenu}>
                     <div className="content">
                         <div className="rect rect-1"></div>
                         <div className="rect rect-2"></div>

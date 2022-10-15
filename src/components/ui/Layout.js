@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import Menu from "./Menu";
+import Loader from "./Loader";
 
 const Layout = ({ children }) => {
+    const [isLoading, setIsLoading] = useState(true);
+
     return (
         <Main>
-            <Navbar />
-            <div className="children">{children}</div>
-            <Footer />
+            {isLoading ? (
+                <Loader setIsLoading={setIsLoading} />
+            ) : (
+                <>
+                    <Navbar />
+                    <div className="children">{children}</div>
+                    <Footer />
+                </>
+            )}
         </Main>
     );
 };
@@ -22,6 +30,7 @@ const Main = styled.main`
     display: flex;
     flex-direction: column;
     z-index: 1;
+    position: relative;
 
     .children {
         flex-grow: 1;

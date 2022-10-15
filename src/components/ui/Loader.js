@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+import { useWindowSize } from "../../use/useWindowSize";
+
 import Cup from "../../assets/icons/cup.svg";
 import Lid from "../../assets/icons/cup-lid.svg";
 import Chris from "../../assets/icons/chris.svg";
 
 const Loader = ({ isLoading, setIsLoading, isMounted }) => {
     const [isHidden, setIsHidden] = useState(false);
+    const { height } = useWindowSize();
 
     // turn loader off after interval
     useEffect(() => {
@@ -21,7 +24,7 @@ const Loader = ({ isLoading, setIsLoading, isMounted }) => {
     });
 
     return (
-        <Wrapper isLoading={isLoading}>
+        <Wrapper isLoading={isLoading} height={height}>
             {isLoading && (
                 <Helmet>
                     <body className="no-scroll" />
@@ -35,12 +38,14 @@ const Loader = ({ isLoading, setIsLoading, isMounted }) => {
                     <div className="cup-container">
                         <Lid className="lid" />
                         <Cup className="cup" />
-                        <Chris className="chris" />
+                        <div className="chris">
+                            <Chris className="icon" />
+                        </div>
                     </div>
                     <div className="loading">
-                        <span>.</span>
-                        <span>.</span>
-                        <span>.</span>
+                        <div className="dot" />
+                        <div className="dot" />
+                        <div className="dot" />
                     </div>
                 </div>
             )}
@@ -70,7 +75,7 @@ const Wrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh; //${props => (props.isLoading ? "100vh" : "0")};
+    height: ${props => props.height}px;
     width: 100%;
     background: ${props => props.theme.color.backgroundLight};
     z-index: 99;
@@ -87,54 +92,36 @@ const Wrapper = styled.div`
 
         @keyframes loading {
             0% {
-                filter: blur(0);
                 opacity: 1;
             }
             100% {
-                opacity: 0.4;
+                opacity: 0.3;
             }
         }
 
         .loading {
             text-align: center;
-            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: ${props => props.theme.spacing.xs};
 
-            span:nth-child(1) {
+            .dot {
+                animation: loading 0.9s infinite;
+                height: 0.5rem;
+                width: 0.5rem;
+                border-radius: 50%;
+                background: ${props => props.theme.color.fontDark};
+            }
+
+            .dot:nth-child(1) {
                 animation-delay: ${animationDelay * 1}s;
             }
-            span:nth-child(2) {
+            .dot:nth-child(2) {
                 animation-delay: ${animationDelay * 2}s;
             }
-            span:nth-child(3) {
+            .dot:nth-child(3) {
                 animation-delay: ${animationDelay * 3}s;
-            }
-            span:nth-child(4) {
-                animation-delay: ${animationDelay * 4}s;
-            }
-            span:nth-child(5) {
-                animation-delay: ${animationDelay * 5}s;
-            }
-            span:nth-child(6) {
-                animation-delay: ${animationDelay * 6}s;
-            }
-            span:nth-child(7) {
-                animation-delay: ${animationDelay * 7}s;
-            }
-            span:nth-child(8) {
-                animation-delay: ${animationDelay * 8}s;
-            }
-            span:nth-child(9) {
-                animation-delay: ${animationDelay * 9}s;
-            }
-            span:nth-child(10) {
-                animation-delay: ${animationDelay * 10}s;
-            }
-
-            span {
-                display: inline-block;
-                transform-origin: 50% 50% 8px;
-                transform-style: preserve-3d;
-                animation: loading 0.9s infinite;
             }
         }
 
@@ -187,23 +174,33 @@ const Wrapper = styled.div`
             top: ${cupHeight * 0.4 + lidHeight}rem;
             transform: translate(-50%, -50%);
             opacity: 1;
+            overflow: hidden;
 
-            animation-name: chris;
-            animation-duration: ${chrisDuration}s;
-            animation-delay: 0;
+            &::before {
+                content: "";
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+                background: ${props => props.theme.color.backgroundLight};
+                transform: translateX(100%);
+                animation-name: chris;
+                animation-duration: ${chrisDuration}s;
+                animation-delay: 0;
+            }
+
+            .icon {
+                height: ${chrisHeight}rem;
+            }
         }
 
         @keyframes chris {
             from {
-                opacity: 0;
-                bottom: 0;
-                transform: translate(100%, 150%) rotate(30deg);
+                transform: translateX(0);
             }
 
             to {
-                bottom: ${cupHeight / 3}rem;
-                transform: translate(-50%, -50%);
-                opacity: 1;
+                transform: translateX(100%);
             }
         }
 

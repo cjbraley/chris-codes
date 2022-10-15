@@ -41,7 +41,11 @@ const Footer = () => {
                         <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
                             <GithubIcon className="icon" />
                         </a>
-                        <a href="mailto.com" target="_blank" rel="noreferrer">
+                        <a
+                            href="mailto:cbraley@protonmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <EmailIcon className="icon icon--email" />
                         </a>
                     </div>

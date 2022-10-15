@@ -43,7 +43,9 @@ const Projects = () => {
                     <div className="line-vertical line-v2" />
                 </div>
                 <div className="project">
-                    <NuteLogo className="project__logo--desktop nute" />
+                    <a href="https://nutefoods-demo.com" target="_blank" rel="noreferrer">
+                        <NuteLogo className="project__logo--desktop nute" />
+                    </a>
                     <div className="project__description">
                         <div className="flex">
                             <h5 className="title">nüte</h5>
@@ -89,7 +91,13 @@ const Projects = () => {
                     <div className="project__description">
                         <div className="flex">
                             <h5 className="title">Guestimate</h5>
-                            <GuestimateLogo className="project__logo guestimate" />
+                            <a
+                                href="http://www.guestimate-calculator.com"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <GuestimateLogo className="project__logo guestimate" />
+                            </a>
                         </div>
                         <p className="text">
                             nüte is an ecommerce website for health food brands. The brand

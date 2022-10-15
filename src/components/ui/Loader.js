@@ -22,9 +22,11 @@ const Loader = ({ isLoading, setIsLoading, isMounted }) => {
 
     return (
         <Wrapper isLoading={isLoading}>
-            <Helmet>
-                <body className="no-scroll" />
-            </Helmet>
+            {isLoading && (
+                <Helmet>
+                    <body className="no-scroll" />
+                </Helmet>
+            )}
             {isMounted && !isHidden && (
                 <div className="loader">
                     <div className="pour-container">

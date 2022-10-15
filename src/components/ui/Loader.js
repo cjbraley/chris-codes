@@ -6,16 +6,11 @@ import Cup from "../../assets/icons/cup.svg";
 import Lid from "../../assets/icons/cup-lid.svg";
 import Chris from "../../assets/icons/chris.svg";
 
-const Loader = ({ isLoading, setIsLoading }) => {
-    const [isMounted, setIsMounted] = useState(false);
+const Loader = ({ isLoading, setIsLoading, isMounted }) => {
     const [isHidden, setIsHidden] = useState(false);
 
     // turn loader off after interval
     useEffect(() => {
-        setTimeout(() => {
-            setIsMounted(true);
-        }, 10);
-
         setTimeout(() => {
             setIsLoading(false);
         }, totalDuration * 1000);

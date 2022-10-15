@@ -10,15 +10,10 @@ const Layout = ({ children }) => {
 
     return (
         <Main>
-            {isLoading ? (
-                <Loader setIsLoading={setIsLoading} />
-            ) : (
-                <>
-                    <Navbar />
-                    <div className="children">{children}</div>
-                    <Footer />
-                </>
-            )}
+            {<Loader isLoading={isLoading} setIsLoading={setIsLoading} />}
+            <Navbar />
+            <div className="children">{children}</div>
+            <Footer />
         </Main>
     );
 };

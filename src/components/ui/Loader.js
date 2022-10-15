@@ -1,34 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 import Cup from "../../assets/icons/cup.svg";
 import Lid from "../../assets/icons/cup-lid.svg";
 import Chris from "../../assets/icons/chris.svg";
 
-const Loader = ({ setIsLoading }) => {
+const Loader = ({ isLoading, setIsLoading }) => {
+    const [isMounted, setIsMounted] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+
     // turn loader off after interval
     useEffect(() => {
         setTimeout(() => {
+            setIsMounted(true);
+        }, 10);
+
+        setTimeout(() => {
             setIsLoading(false);
         }, totalDuration * 1000);
+
+        setTimeout(() => {
+            setIsHidden(true);
+        }, (totalDuration + closeDuration) * 1000);
     });
+
     return (
-        <Wrapper>
-            <div className="loader">
-                <div className="pour-container">
-                    <div className="pour"></div>
+        <Wrapper isLoading={isLoading}>
+            <Helmet>
+                <body className="no-scroll" />
+            </Helmet>
+            {isMounted && !isHidden && (
+                <div className="loader">
+                    <div className="pour-container">
+                        <div className="pour"></div>
+                    </div>
+                    <div className="cup-container">
+                        <Lid className="lid" />
+                        <Cup className="cup" />
+                        <Chris className="chris" />
+                    </div>
+                    <div className="loading">
+                        <span>.</span>
+                        <span>.</span>
+                        <span>.</span>
+                    </div>
                 </div>
-                <div className="cup-container">
-                    <Lid className="lid" />
-                    <Cup className="cup" />
-                    <Chris className="chris" />
-                </div>
-                <div className="loading">
-                    <span>.</span>
-                    <span>.</span>
-                    <span>.</span>
-                </div>
-            </div>
+            )}
             <div className="rect rect-1"></div>
             <div className="rect rect-2"></div>
             <div className="rect rect-3"></div>
@@ -48,17 +66,19 @@ const chrisDuration = 0.5;
 const pourDuration = 1.5;
 const lidDuration = pourDuration * 1.25;
 const totalDuration = chrisDuration + lidDuration;
-
+const closeDuration = 0.6;
 const animationDelay = 0.3;
 
 const Wrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100vh; //${props => (props.isLoading ? "100vh" : "0")};
     width: 100%;
     background: ${props => props.theme.color.backgroundLight};
     z-index: 99;
+    transform: ${props => (props.isLoading ? "translateY(0%)" : "translateY(-100%)")};
+    transition: all ${closeDuration}s ease;
 
     .loader {
         position: absolute;

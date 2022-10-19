@@ -16,12 +16,11 @@ const Project = ({
     description,
     projectLink,
     githubLink,
-    height,
 }) => {
     const [activeImage, setActiveImage] = useState(0);
 
     return (
-        <Wrapper className={`${alignment}`} height={height}>
+        <Wrapper className={`${alignment}`}>
             <a href={projectLink} target="_blank" rel="noreferrer" className="logo logo--desktop">
                 <Logo className="nute" style={logoStyles} />
             </a>
@@ -134,7 +133,6 @@ const Wrapper = styled.div`
         grid-area: image;
         margin-bottom: ${props => props.theme.spacing.m};
         width: 100%;
-        height: ${props => props.height};
         border-bottom-right-radius: 0.375rem;
         border-bottom-left-radius: 0.375rem;
         overflow: hidden;

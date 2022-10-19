@@ -39,6 +39,7 @@ const Project = ({
                 selectedItem={activeImage}
                 infiniteLoop={true}
                 interval={2000}
+                swipeable={false}
                 onClickItem={() => setActiveImage((activeImage + 1) % images.length)}
             >
                 {images.map((image, i) => (

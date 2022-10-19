@@ -23,15 +23,15 @@ const Hero = () => {
                     <DeskIcon className="hero__desk" />
                     <div className="hero__links">
                         <div className="icon-container">
-                            <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
-                                <GithubIcon className="icon" />
-                            </a>
                             <a
                                 href="https://www.linkedin.com/in/christopher-b-913439103/"
                                 target="_blank"
                                 rel="noreferrer"
                             >
                                 <LinkedInIcon className="icon" />
+                            </a>
+                            <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
+                                <GithubIcon className="icon" />
                             </a>
                         </div>
                         <a

@@ -34,6 +34,7 @@ const Projects = () => {
             logo: NuteLogo,
             logoStyles: { width: "4rem" },
             images: imagesNute,
+            height: "34.5rem",
             githubLink: "https://github.com/cjbraley/nutefoods-frontend",
             projectLink: "https://nutefoods-demo.com/",
         },
@@ -44,6 +45,7 @@ const Projects = () => {
             logo: GuestimateLogo,
             logoStyles: { width: "8rem" },
             images: imagesGuestimate,
+            height: "28rem",
             githubLink: "https://github.com/cjbraley/Guestimate",
             projectLink: "https://www.guestimate-calculator.com",
         },
@@ -77,6 +79,7 @@ const Projects = () => {
                             projectLink={project.projectLink}
                             githubLink={project.githubLink}
                             alignment={i % 2 === 0 ? "left" : "right"}
+                            height={project.height} // to deal with inconsistent image sizes
                         />
 
                         {i < projects.length - i && (

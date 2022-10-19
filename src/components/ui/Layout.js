@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
     return (
         <Main>
             <Loader isLoading={isLoading} setIsLoading={setIsLoading} isMounted={isMounted} />
-            {isMounted && (
+            {!isLoading && (
                 <>
                     <Navbar />
                     <div className="children">{children}</div>

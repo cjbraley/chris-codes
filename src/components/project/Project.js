@@ -16,18 +16,26 @@ const Project = ({
     description,
     projectLink,
     githubLink,
+    height,
 }) => {
     const [activeImage, setActiveImage] = useState(0);
 
     return (
-        <Wrapper className={`${alignment}`}>
+        <Wrapper className={`${alignment}`} height={height}>
             <a href={projectLink} target="_blank" rel="noreferrer" className="logo logo--desktop">
                 <Logo className="nute" style={logoStyles} />
             </a>
             <div className="description">
                 <div className="flex">
-                    <h5 className="title">nüte</h5>
-                    <Logo className="nute logo--mobile" style={logoStyles} />
+                    <h5 className="title">{title}</h5>
+                    <a
+                        href={projectLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="logo logo--mobile"
+                    >
+                        <Logo style={logoStyles} />
+                    </a>
                 </div>
                 <p className="text">{description}</p>
             </div>
@@ -126,11 +134,18 @@ const Wrapper = styled.div`
         grid-area: image;
         margin-bottom: ${props => props.theme.spacing.m};
         width: 100%;
+        height: ${props => props.height};
         border-bottom-right-radius: 0.375rem;
         border-bottom-left-radius: 0.375rem;
         overflow: hidden;
 
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
+
+        // fix safari rounded corners overflow bug
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
 
         img {
             border-bottom-right-radius: 0.375rem;

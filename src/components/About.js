@@ -19,10 +19,8 @@ const About = () => {
                     </div>
                 </div>
                 <p className="description">
-                    I’m an enthusiastic and technically inclined BI Developer with extensive
-                    experience in BI system implementation, especially with Qlik Sense. Currently
-                    working on the Westpac Institutional Bank’s Qlik-based data analytics platform
-                    which is used to support risk management and trading activity.{" "}
+                    I'm a full stack web developer based in Sydney, Australia. I love bringing new
+                    ideas to life in the browser and have a passion for simple and clean code.
                 </p>
                 <div className="timeline-container">
                     <Timeline
@@ -38,6 +36,12 @@ const About = () => {
         </Wrapper>
     );
 };
+
+// I’m an enthusiastic and technically inclined BI Developer with extensive
+//                     experience in BI system implementation, especially with Qlik Sense. Currently
+//                     working on the Westpac Institutional Bank’s Qlik-based data analytics platform
+//                     which is used to support risk management and trading activity. I’m a full stack
+//                     web developer and coffee enthusiast (addict?).
 
 const Wrapper = styled.div`
     padding-top: ${props => props.theme.spacing.xl};

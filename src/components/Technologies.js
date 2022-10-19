@@ -36,14 +36,23 @@ const badges = [
     {
         icon: <WWWIcon className="icon" />,
         color: "primary",
+        title: "Web",
+        description:
+            "I have experience with most of popular web development tools, frontend and backend. React and Vue are my bread and butter but I'm always trying out and learning new tools.",
     },
     {
         icon: <DatabaseIcon className="icon" />,
         color: "secondary",
+        title: "Data",
+        description:
+            "Having a background in Business Intelligence I'm intimately familiar with most products related to data storage, transformation and visualisation.",
     },
     {
         icon: <CogIcon className="icon" />,
         color: "tertiary",
+        title: "Other",
+        description:
+            "And the other things we need as developers. I'm not sure how I'd survive without Jira.",
     },
 ];
 
@@ -75,25 +84,8 @@ const Technologies = () => {
                     ))}
                 </div>
                 <div className="description-container">
-                    <h5 className="group-title">Web</h5>
-                    <p className="group-description">
-                        I have experience with most of popular web development tools, frontend and
-                        backend. React and Vue are my bread and butter but I'm always trying out and
-                        learning new tools.
-                    </p>
-                    {/* <br />
-                    <h5 className="group-title">Database</h5>
-                    <p className="group-description">
-                        Coming from a background in Business Intelligence I'm intimately familiar
-                        with most products related to data storage, transformation and
-                        visualisation.
-                    </p>
-                    <br />
-                    <h5 className="group-title">Other</h5>
-                    <p className="group-description">
-                        The other stuff you need to know as a developer. I'm not sure how people
-                        used to survive without Jira.
-                    </p> */}
+                    <h5 className="group-title">{badges[activeBadgeIndex].title}</h5>
+                    <p className="group-description">{badges[activeBadgeIndex].description}</p>
                 </div>
                 <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
                 <div className="canvas">
@@ -397,6 +389,7 @@ const Wrapper = styled.div`
         }
 
         .description-container {
+            height: 6rem;
             width: 40rem;
             margin-left: auto;
             margin-right: auto;

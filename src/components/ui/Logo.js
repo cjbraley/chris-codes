@@ -13,14 +13,12 @@ const Logo = ({ alt = false }) => {
 
 const Wrapper = styled.div`
     .logo {
-        height: 3.25rem;
+        height: 4.25rem;
         fill: ${props => props.theme.color.fontDark};
-        stroke: ${props => props.theme.color.fontDark};
     }
 
     .logo--alt {
         fill: ${props => props.theme.color.fontLight};
-        stroke: ${props => props.theme.color.fontLight};
     }
 `;
 

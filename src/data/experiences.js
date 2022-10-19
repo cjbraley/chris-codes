@@ -21,7 +21,7 @@ const experiences = [
         link: "https://www.ox.ac.uk",
         position: "Analyst, Investment Banking",
         description:
-            "While at university I participated in Credit Suisse’s graduate program for investment banking. I was part of the leveraged finance team which facilitates high yield issuances and leveraged buyouts.",
+            "I participated in Credit Suisse’s graduate program for investment banking. I was part of the leveraged finance team which facilitates high yield issuances and leveraged buyouts.",
         responsibilities: [
             "Financial modelling in Excel, used to assess risk and return of high yield bond issuances",
             "Work as part of the team to develop return maximising financial strategies for clients",
@@ -36,7 +36,7 @@ const experiences = [
         link: "https://www.cubaneconsulting.com",
         position: "BI Developer",
         description:
-            "After leaving university I joined Cubane Consulting, a boutique management consultancy specialising in the higher education sector. During this time my main focus was leading the project to replace Cubane's existing BI tools with a new platform based on Qlik Sense.",
+            "After leaving university I joined Cubane Consulting, a boutique management consultancy. Although I joined as a consultant, I quickly found an aptitude for the technical side of things.  During this time my main focus was leading the project to replace Cubane's existing BI tools with a new platform based on Qlik Sense.",
         responsibilities: [
             "Lead end-to-end implementation of Qlik Sense to replace existing BI tools",
             "Gather business requirements from internal and external stakeholders",
@@ -54,7 +54,7 @@ const experiences = [
         link: "https://www.cubaneconsulting.com",
         position: "BI Lead",
         description:
-            "With a maturing analytics platform, my focus shifted to adding more advanced reporting capabilities. In particular, embedding of reporting directly into Cubane's web applications.",
+            "With a maturing analytics platform, my focus shifted to adding more advanced reporting capabilities. In particular this involved integration of reporting directly into Cubane's web applications.",
         responsibilities: [
             "Responsibility for designing and maintaining all outflows of data across all offices and locations",
             "Line management of other members of the reporting team",

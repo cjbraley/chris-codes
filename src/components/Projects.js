@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
+import Project from "./project/Project";
 
 import NuteLogo from "../assets/icons/nute.svg";
 import GuestimateLogo from "../assets/icons/guestimate.svg";
-import GithubIcon from "../assets/icons/github-outline.svg";
-import LinkIcon from "../assets/icons/link.svg";
 
 const query = graphql`
     query {
-        allFile {
+        allFile(sort: { fields: name }) {
             nodes {
                 name
                 childImageSharp {
@@ -24,8 +23,32 @@ const query = graphql`
 const Projects = () => {
     const data = useStaticQuery(query);
     const nodes = data.allFile.nodes;
-    const imageGuestimate = nodes.filter(node => node.name.includes("Guestimate"))[0];
-    const imageNute = nodes.filter(node => node.name.includes("nute"))[0];
+    const imagesGuestimate = nodes.filter(node => node.name.includes("guestimate"));
+    const imagesNute = nodes.filter(node => node.name.includes("nute"));
+
+    const projects = [
+        {
+            title: "nüte",
+            description:
+                "The online store for health foods brand nüte. The brand operates out of Honk Kong and has a focus on on all-natural, nutritious ingredients. Their signature product is the icebar smoothie.",
+            logo: NuteLogo,
+            logoStyles: { width: "4rem" },
+            images: imagesNute,
+            githubLink: "https://github.com/cjbraley/nutefoods-frontend",
+            projectLink: "https://nutefoods-demo.com/",
+        },
+        {
+            title: "Guestimate",
+            description:
+                "Guestimate offers a calculator that estimates how your net worth will change over time using simple inputs like income and expenses.",
+            logo: GuestimateLogo,
+            logoStyles: { width: "8rem" },
+            images: imagesGuestimate,
+            githubLink: "https://github.com/cjbraley/Guestimate",
+            projectLink: "https://www.guestimate-calculator.com",
+        },
+    ];
+
     return (
         <Wrapper>
             <div className="anchor" id="projects"></div>
@@ -42,91 +65,29 @@ const Projects = () => {
                     <div className="line-horizontal line-h1" />
                     <div className="line-vertical line-v2" />
                 </div>
-                <div className="project">
-                    <a href="https://nutefoods-demo.com" target="_blank" rel="noreferrer">
-                        <NuteLogo className="project__logo--desktop nute" />
-                    </a>
-                    <div className="project__description">
-                        <div className="flex">
-                            <h5 className="title">nüte</h5>
-                            <NuteLogo className="project__logo nute" />
-                        </div>
-                        <p className="text">
-                            nüte is an ecommerce website for health food brands. The brand
-                            specialises in the sale of their signature icebar smoothies. Order a
-                            bundle today
-                        </p>
-                    </div>
-                    <GatsbyImage
-                        image={getImage(imageNute)}
-                        alt={imageNute.name}
-                        className="project__img"
-                    />
-                    <div className="project__links">
-                        <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
-                            <GithubIcon className="icon" />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/christopher-b-913439103/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <LinkIcon className="icon" />
-                        </a>
-                    </div>
-                    <div className="rect" />
-                    <div className="project__stack">
-                        <p>React | Gatsby | Strapi | Vultr </p>
-                    </div>
-                </div>
 
-                <div className="lines">
-                    <div className="line-vertical line-v1" />
-                    <div className="line-horizontal line-h1" />
-                    <div className="line-vertical line-v2" />
-                </div>
+                {projects.map((project, i) => (
+                    <div key={i}>
+                        <Project
+                            images={project.images}
+                            logo={project.logo}
+                            logoStyles={project.logoStyles}
+                            title={project.title}
+                            description={project.description}
+                            projectLink={project.projectLink}
+                            githubLink={project.githubLink}
+                            alignment={i % 2 === 0 ? "left" : "right"}
+                        />
 
-                <div className="project project--right">
-                    <GuestimateLogo className="project__logo project__logo--desktop guestimate" />
-                    <div className="project__description">
-                        <div className="flex">
-                            <h5 className="title">Guestimate</h5>
-                            <a
-                                href="http://www.guestimate-calculator.com"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <GuestimateLogo className="project__logo guestimate" />
-                            </a>
-                        </div>
-                        <p className="text">
-                            nüte is an ecommerce website for health food brands. The brand
-                            specialises in the sale of their signature icebar smoothies. Order a
-                            bundle today
-                        </p>
+                        {i < projects.length - i && (
+                            <div className="lines">
+                                <div className="line-vertical line-v1" />
+                                <div className="line-horizontal line-h1" />
+                                <div className="line-vertical line-v2" />
+                            </div>
+                        )}
                     </div>
-                    <GatsbyImage
-                        image={getImage(imageGuestimate)}
-                        alt={imageGuestimate.name}
-                        className="project__img"
-                    />
-                    <div className="project__links">
-                        <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
-                            <GithubIcon className="icon" />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/christopher-b-913439103/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <LinkIcon className="icon" />
-                        </a>
-                    </div>
-                    <div className="rect rect--secondary" />
-                    <div className="project__stack">
-                        <p>Vue 3 | D3.js | Netlify </p>
-                    </div>
-                </div>
+                ))}
             </div>
         </Wrapper>
     );
@@ -138,82 +99,6 @@ const Wrapper = styled.div`
 
     .page-section__header {
         margin-bottom: ${props => props.theme.spacing.xs};
-    }
-
-    .project {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: ${props => props.theme.spacing.m};
-
-        &:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .project__logo--desktop {
-            display: none;
-        }
-
-        .nute {
-            height: 4rem;
-        }
-        .guestimate {
-            width: 8rem;
-        }
-
-        &__description {
-            padding: ${props => props.theme.spacing.l} ${props => props.theme.spacing.m};
-            border-top-right-radius: 0.375rem;
-            border-top-left-radius: 0.375rem;
-            background-color: #e7ecf6;
-
-            .flex {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding-bottom: ${props => props.theme.spacing.m};
-
-                &__logo {
-                    max-height: 4rem;
-                }
-            }
-
-            .title {
-                font-family: ${props => props.theme.font.family.secondary}, sans-serif;
-            }
-        }
-
-        &__img {
-            margin-bottom: ${props => props.theme.spacing.m};
-        }
-
-        &__links {
-            display: flex;
-            flex-grow: 1;
-            gap: ${props => props.theme.spacing.s};
-            margin-bottom: ${props => props.theme.spacing.m};
-
-            .icon {
-                height: 1.5rem;
-                stroke: ${props => props.theme.color.fontDark};
-
-                &:hover {
-                    opacity: 0.75;
-                }
-            }
-        }
-
-        .rect {
-            height: 1rem;
-            width: 7.5rem;
-            background: ${props => props.theme.color.primary};
-            margin-bottom: ${props => props.theme.spacing.m};
-
-            &.rect--secondary {
-                background: ${props => props.theme.color.secondary};
-            }
-        }
     }
 
     .lines {
@@ -268,66 +153,8 @@ const Wrapper = styled.div`
     }
 
     @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
-        .project {
-            position: relative;
-            height: 33rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: ${props => props.theme.spacing.m};
-
-            &:last-of-type {
-                margin-bottom: ${props => props.theme.spacing.xl};
-            }
-
-            .project__logo--desktop {
-                display: initial;
-            }
-
-            &__description {
-                max-width: 40rem;
-                padding: ${props => props.theme.spacing.m};
-                /* margin-top: ${props => props.theme.spacing.l}; */
-
-                .title {
-                    margin-bottom: ${props => props.theme.spacing.m};
-                }
-
-                .flex {
-                    margin: 0;
-                    padding: 0;
-
-                    .project__logo {
-                        display: none;
-                    }
-                }
-            }
-
-            &__img {
-                position: absolute;
-                z-index: -1;
-                height: calc(100% + 2rem);
-                right: 0;
-                top: 0rem;
-                max-height: 38rem;
-            }
-
-            .rect {
-                margin-bottom: 0;
-            }
-
-            &.project--right {
-                align-items: flex-end;
-
-                .project__description {
-                    text-align: right;
-                }
-
-                .project__img {
-                    left: 0;
-                    right: initial;
-                }
-            }
+        .content {
+            max-width: 68rem;
         }
 
         .lines {

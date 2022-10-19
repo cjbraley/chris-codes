@@ -75,12 +75,25 @@ const Technologies = () => {
                     ))}
                 </div>
                 <div className="description-container">
-                    <h5 className="group-title">Frontend</h5>
+                    <h5 className="group-title">Web</h5>
                     <p className="group-description">
-                        Nutefoods is an ecommerce website for health food brands nute. The brand
-                        specialises in the sale of their signature icebar smoothies. Order a bundle
-                        today|
+                        I have experience with most of popular web development tools, frontend and
+                        backend. React and Vue are my bread and butter but I'm always trying out and
+                        learning new tools.
                     </p>
+                    {/* <br />
+                    <h5 className="group-title">Database</h5>
+                    <p className="group-description">
+                        Coming from a background in Business Intelligence I'm intimately familiar
+                        with most products related to data storage, transformation and
+                        visualisation.
+                    </p>
+                    <br />
+                    <h5 className="group-title">Other</h5>
+                    <p className="group-description">
+                        The other stuff you need to know as a developer. I'm not sure how people
+                        used to survive without Jira.
+                    </p> */}
                 </div>
                 <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
                 <div className="canvas">
@@ -171,7 +184,7 @@ const Technologies = () => {
                         <div className="canvas--workflow">
                             <div className="canvas-row">
                                 <div className="group frameworks">
-                                    <div className="text--large title">Project Management</div>
+                                    <div className="text--large title">Project Tracking</div>
                                     <div className="group-row">
                                         <Jira className="icon" />
                                         <Asana className="icon" />
@@ -226,6 +239,7 @@ const Wrapper = styled.div`
             cursor: pointer;
             display: flex;
             align-items: center;
+            justify-content: center;
             height: 4.75rem;
             width: 4.75rem;
 
@@ -248,12 +262,7 @@ const Wrapper = styled.div`
 
             &.active {
                 .badge {
-                    height: 4.75rem;
-                    width: 4.75rem;
-                    .icon {
-                        height: 3rem;
-                        width: 3rem;
-                    }
+                    transform: scale(1.15);
                 }
             }
 
@@ -368,21 +377,21 @@ const Wrapper = styled.div`
 
     @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
         .badge-container {
-            width: 32rem;
+            width: 24rem;
             margin-left: auto;
             margin-right: auto;
 
             .badge-box {
-                height: 6rem;
-                width: 6rem;
-            }
+                height: 5.25rem;
+                width: 5.25rem;
 
-            .badge {
-                height: 5rem;
-                width: 5rem;
+                .badge {
+                    height: 4.5rem;
+                    width: 4.5rem;
 
-                .icon {
-                    height: 3rem;
+                    .icon {
+                        height: 2.75rem;
+                    }
                 }
             }
         }

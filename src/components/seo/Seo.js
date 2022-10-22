@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
-const SEO = props => {
+const Seo = props => {
     const { pathname } = useLocation();
     const {
         site: { siteMetadata: meta },
@@ -45,4 +45,4 @@ const SEO = props => {
     );
 };
 
-export default SEO;
+export default Seo;

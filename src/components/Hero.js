@@ -13,7 +13,7 @@ const Hero = () => {
             <div className="content">
                 <div className="hero">
                     <div className="hero__info typewriter">
-                        <h1 className="title">Hi, I'm Chris Braley.</h1>
+                        <h1 className="title">Hi, I'm Chris Braley</h1>
                         <div className="text--large text">
                             I’m a full stack web developer and coffee enthusiast (addict?). I have a
                             passion for clean code and great user experiences. Check out my projects

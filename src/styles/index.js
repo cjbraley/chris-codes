@@ -179,7 +179,7 @@ const Global = createGlobalStyle`
     }
 
     .content {
-        max-width: 1200px;
+        max-width: 34rem;
         margin-left: auto;
         margin-right: auto;
 
@@ -240,6 +240,7 @@ const Global = createGlobalStyle`
 
     @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
 
+
         
     }
     
@@ -294,7 +295,11 @@ const Global = createGlobalStyle`
         }
 
         .text--button {
-            font-size: ${props => props.theme.font.size.desktop.m}
+            font-size: ${props => props.theme.font.size.desktop.m};
+        }
+
+        .content {   
+            max-width: 1200px;
         }
 
     }

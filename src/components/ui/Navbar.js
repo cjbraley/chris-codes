@@ -49,7 +49,7 @@ const Navbar = () => {
                         {width < theme.breakpoint.tablet && (
                             <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
                         )}
-                        {width >= theme.breakpoint.desktop && (
+                        {width >= theme.breakpoint.tablet && (
                             <div className="navbar-links">
                                 {navItems.map(item => (
                                     <Link
@@ -120,24 +120,36 @@ const Nav = styled.nav`
         .navbar-links {
     
             .navbar-item {
+                margin-left: ${props => props.theme.spacing.m};
+
     
                 &:hover {
                     border-bottom: 2px solid ${props => props.theme.color.fontDark};
                 }
             }
         }
+
+        .navbar-links {
+            order: 2;
+        }
     
         .navbar-logo {
+            order: 1;
         }
     }
 
+    @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
+        .content {
+            max-width: none;
+        }
+
+    }
 
     @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
 
-        .navbar-logo {
-            order: 1;
 
-        }
+
+
 
         .navbar-links {
 
@@ -146,9 +158,7 @@ const Nav = styled.nav`
                 }
         }
     
-        .navbar-links {
-            order: 2;
-        }
+
 `;
 
 const NavOffset = styled.div`

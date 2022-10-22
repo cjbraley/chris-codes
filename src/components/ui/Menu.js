@@ -32,6 +32,7 @@ const Menu = ({ showMenu, setShowMenu }) => {
             <Helmet>
                 <body className={showMenu ? "no-scroll" : ""} />
             </Helmet>
+            <div className={`overlay ${showMenu ? "" : "overlay--hidden"}`}></div>
             <div ref={wrapperRef}>
                 <div
                     className="ham-box"
@@ -133,6 +134,23 @@ const Wrapper = styled.div`
             transition: ${({ showMenu }) =>
                 showMenu ? "var(--ham-after-active)" : "var(--ham-after)"};
         }
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        transition: 0.25s all ease;
+    }
+
+    .overlay--hidden {
+        background-color: initial;
+        backdrop-filter: blur(0px);
+        pointer-events: none;
     }
 
     .menu {

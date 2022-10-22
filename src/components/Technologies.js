@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import AnimateIn from "./general/AnimateIn";
+
 import WWWIcon from "../assets/icons/www.svg";
 import DatabaseIcon from "../assets/icons/database.svg";
 import CogIcon from "../assets/icons/cog.svg";
@@ -63,34 +65,38 @@ const Technologies = () => {
         <Wrapper color={badges[activeBadgeIndex].color} className="page-section">
             <div className="anchor" id="technologies"></div>
             <div className="content">
-                <div className="page-section__header">
-                    <h2 className="page-section__header__title">Technologies</h2>
-                    <div className="text--large page-section__header__subtitle">
-                        Some of my favourite tools
-                    </div>
-                </div>
-                <div className="badge-container">
-                    {badges.map((badge, i) => (
-                        <div
-                            key={i}
-                            className={`badge-box  ${activeBadgeIndex === i ? "active" : ""}`}
-                            onClick={() => setActiveBadgeIndex(i)}
-                            onKeyDown={() => setActiveBadgeIndex(i)}
-                            tabIndex="0"
-                            role="button"
-                        >
-                            <div className={`badge badge--${badge.color}`}>{badge.icon}</div>
+                <AnimateIn>
+                    <div className="page-section__header">
+                        <h2 className="page-section__header__title">Technologies</h2>
+                        <div className="text--large page-section__header__subtitle">
+                            Some of my favourite tools
                         </div>
-                    ))}
-                </div>
-                <div className="description-container">
-                    <h5 className="group-title">{badges[activeBadgeIndex].title}</h5>
-                    <p className="group-description">{badges[activeBadgeIndex].description}</p>
-                </div>
-                <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
-                <div className="canvas">
-                    {activeBadgeIndex === 0 && (
-                        <div className="canvas--frontend">
+                    </div>
+                </AnimateIn>
+                <AnimateIn>
+                    <div className="badge-container">
+                        {badges.map((badge, i) => (
+                            <div
+                                key={i}
+                                className={`badge-box  ${activeBadgeIndex === i ? "active" : ""}`}
+                                onClick={() => setActiveBadgeIndex(i)}
+                                onKeyDown={() => setActiveBadgeIndex(i)}
+                                tabIndex="0"
+                                role="button"
+                            >
+                                <div className={`badge badge--${badge.color}`}>{badge.icon}</div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="description-container">
+                        <h5 className="group-title">{badges[activeBadgeIndex].title}</h5>
+                        <p className="group-description">{badges[activeBadgeIndex].description}</p>
+                    </div>
+                    <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
+                </AnimateIn>
+                {activeBadgeIndex === 0 && (
+                    <AnimateIn>
+                        <div className="canvas canvas--frontend">
                             <div className="canvas-row">
                                 <div className="group the-basics">
                                     <div className="text--large title">Fundamentals</div>
@@ -138,9 +144,12 @@ const Technologies = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
-                    {activeBadgeIndex === 1 && (
-                        <div className="canvas--data">
+                        <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
+                    </AnimateIn>
+                )}
+                {activeBadgeIndex === 1 && (
+                    <AnimateIn>
+                        <div className="canvas canvas--data">
                             <div className="canvas-row">
                                 <div className="group the-basics">
                                     <div className="text--large title">Database</div>
@@ -171,9 +180,12 @@ const Technologies = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
-                    {activeBadgeIndex === 2 && (
-                        <div className="canvas--workflow">
+                        <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
+                    </AnimateIn>
+                )}
+                {activeBadgeIndex === 2 && (
+                    <AnimateIn>
+                        <div className="canvas canvas--workflow">
                             <div className="canvas-row">
                                 <div className="group frameworks">
                                     <div className="text--large title">Project Tracking</div>
@@ -206,9 +218,9 @@ const Technologies = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
-                </div>
-                <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
+                        <div className={`rect rect--${badges[activeBadgeIndex].color}`} />
+                    </AnimateIn>
+                )}
             </div>
         </Wrapper>
     );

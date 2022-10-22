@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
 
+import AnimateIn from "./general/AnimateIn";
 import Project from "./project/Project";
 
 import NuteLogo from "../assets/icons/nute.svg";
@@ -53,39 +54,37 @@ const Projects = () => {
         <Wrapper>
             <div className="anchor" id="projects"></div>
             <div className="content">
-                <div className="page-section__header">
-                    <h2 className="page-section__header__title">Projects</h2>
-                    <div className="text--large page-section__header__subtitle">
-                        Some things I've built
+                <AnimateIn>
+                    <div className="page-section__header">
+                        <h2 className="page-section__header__title">Projects</h2>
+                        <div className="text--large page-section__header__subtitle">
+                            Some things I've built
+                        </div>
                     </div>
-                </div>
-
-                <div className="lines--first">
-                    <div className="line-vertical line-v1" />
-                    <div className="line-horizontal line-h1" />
-                    <div className="line-vertical line-v2" />
-                </div>
+                </AnimateIn>
 
                 {projects.map((project, i) => (
                     <div key={i}>
-                        <Project
-                            images={project.images}
-                            logo={project.logo}
-                            logoStyles={project.logoStyles}
-                            title={project.title}
-                            description={project.description}
-                            projectLink={project.projectLink}
-                            githubLink={project.githubLink}
-                            alignment={i % 2 === 0 ? "left" : "right"}
-                        />
-
-                        {i < projects.length - i && (
-                            <div className="lines">
+                        <AnimateIn>
+                            <div className={`lines${i === 0 ? "--first" : ""}`}>
                                 <div className="line-vertical line-v1" />
                                 <div className="line-horizontal line-h1" />
                                 <div className="line-vertical line-v2" />
                             </div>
-                        )}
+
+                            <div>
+                                <Project
+                                    images={project.images}
+                                    logo={project.logo}
+                                    logoStyles={project.logoStyles}
+                                    title={project.title}
+                                    description={project.description}
+                                    projectLink={project.projectLink}
+                                    githubLink={project.githubLink}
+                                    alignment={i % 2 === 0 ? "left" : "right"}
+                                />
+                            </div>
+                        </AnimateIn>
                     </div>
                 ))}
             </div>

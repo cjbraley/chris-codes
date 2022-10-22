@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Experience = ({
+const Seo = ({
     Logo,
     company,
     link,
@@ -10,6 +10,7 @@ const Experience = ({
     responsibilities,
     technologies,
     color,
+    handleClick,
 }) => {
     return (
         <Wrapper color={color}>
@@ -47,7 +48,14 @@ const Experience = ({
                     </div>
                 )}
             </div>
-            <div className="rect rect--secondary" />
+            <div
+                className="rect rect--secondary"
+                onClick={handleClick}
+                onKeyDown={handleClick}
+                role="button"
+                tabIndex="0"
+                aria-label="next"
+            />
         </Wrapper>
     );
 };
@@ -65,6 +73,7 @@ const Wrapper = styled.div`
     } */
 
     .rect {
+        cursor: pointer;
         position: absolute;
         top: 0;
         height: 1rem;
@@ -186,4 +195,4 @@ const Wrapper = styled.div`
     }
 `;
 
-export default Experience;
+export default Seo;

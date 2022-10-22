@@ -44,7 +44,6 @@ const Hero = () => {
                         </a>
                     </div>
                 </div>
-
                 <div className="hero-rect-1"></div>
                 <div className="hero-rect-2"></div>
             </div>

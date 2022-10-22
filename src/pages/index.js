@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import SEO from "../components/seo/SEO";
+import Seo from "../components/seo/Seo";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Technologies from "../components/Technologies";
@@ -10,7 +10,7 @@ import Contact from "../components/Contact";
 const IndexPage = () => {
     return (
         <main>
-            <SEO />
+            <Seo />
             <Hero />
             <Projects />
             <Technologies />

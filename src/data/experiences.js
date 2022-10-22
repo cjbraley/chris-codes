@@ -18,7 +18,7 @@ const experiences = [
         time: "2014",
         Logo: CreditSuisse,
         company: "Credit Suisse",
-        link: "https://www.ox.ac.uk",
+        link: "https://www.credit-suisse.com",
         position: "Analyst, Investment Banking",
         description:
             "I participated in Credit Suisse’s graduate program for investment banking. I was part of the leveraged finance team which facilitates high yield issuances and leveraged buyouts.",

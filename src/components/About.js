@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import experienceData from "../data/experiences";
 
+import AnimateIn from "../components/general/AnimateIn";
 import Timeline from "./about/timeline";
 import Experience from "./about/experience";
 
@@ -12,26 +13,41 @@ const About = () => {
         <Wrapper className="page-section">
             <div className="anchor" id="about"></div>
             <div className="content">
-                <div className="page-section__header">
-                    <h2 className="page-section__header__title">About</h2>
-                    <div className="text--large page-section__header__subtitle">
-                        A little about me
+                <AnimateIn>
+                    <div className="page-section__header">
+                        <h2 className="page-section__header__title" data-sal="slide-up">
+                            About
+                        </h2>
+                        <div
+                            className="text--large page-section__header__subtitle"
+                            data-sal="slide-up"
+                        >
+                            A little about me
+                        </div>
                     </div>
-                </div>
-                <p className="description">
-                    I'm a full stack web developer based in Sydney, Australia. I love bringing new
-                    ideas to life in the browser and have a passion for simple and clean code.
-                </p>
-                <div className="timeline-container">
-                    <Timeline
-                        labels={experienceData.map(data => data.time)}
-                        activeIndex={activeExperienceIndex}
-                        clickHandler={setActiveExperienceIndex}
-                    />
-                </div>
-                <div className="experience-container">
-                    <Experience {...experienceData[activeExperienceIndex]} />
-                </div>
+                    <p className="description">
+                        I'm a full stack web developer based in Sydney, Australia. I love bringing
+                        new ideas to life in the browser and have a passion for simple and clean
+                        code.
+                    </p>
+                    <div className="timeline-container">
+                        <Timeline
+                            labels={experienceData.map(data => data.time)}
+                            activeIndex={activeExperienceIndex}
+                            clickHandler={setActiveExperienceIndex}
+                        />
+                    </div>
+                    <div className="experience-container">
+                        <Experience
+                            {...experienceData[activeExperienceIndex]}
+                            handleClick={() =>
+                                setActiveExperienceIndex(
+                                    (activeExperienceIndex + 1) % experienceData.length
+                                )
+                            }
+                        />
+                    </div>
+                </AnimateIn>
             </div>
         </Wrapper>
     );

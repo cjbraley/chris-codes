@@ -103,6 +103,7 @@ const Nav = styled.nav`
 
     .content {
         width: 100%;
+        max-width: none;
     }
 
     .navbar-menu {
@@ -139,16 +140,15 @@ const Nav = styled.nav`
     }
 
     @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
-        .content {
-            max-width: none;
-        }
 
     }
 
     @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
 
 
-
+        .content {
+            max-width: 1200px;
+        }
 
 
         .navbar-links {

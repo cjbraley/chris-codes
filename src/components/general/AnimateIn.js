@@ -1,17 +1,18 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
-const threshold = 0.1;
-const distance = 50;
+const threshold = 0;
+const distance = 30;
 const triggerOnce = true;
-const duration = 250;
+const duration = 225;
+const delay = 150;
 
 const AnimateIn = ({ children }) => {
     const [ref, inView] = useInView({ threshold, triggerOnce });
 
     const styles = {
         transition: `opacity ${duration}ms, transform ${duration}ms`,
-        transitionDelay: "200ms",
+        transitionDelay: `${delay}ms`,
         opacity: inView ? 1 : 0,
         transform: `translateY(${inView ? 0 : distance}px)`,
     };

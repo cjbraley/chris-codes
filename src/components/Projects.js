@@ -31,7 +31,7 @@ const Projects = () => {
         {
             title: "nüte",
             description:
-                "The online store for health foods brand nüte. The brand operates out of Honk Kong and has a focus on on all-natural, nutritious ingredients. Their signature product is the icebar smoothie.",
+                "The online store for health foods brand nüte. The brand operates out of Honk Kong and has a focus on all-natural, nutritious ingredients. Their signature product is the icebar smoothie.",
             logo: NuteLogo,
             logoStyles: { width: "4rem" },
             images: imagesNute,

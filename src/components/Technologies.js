@@ -40,14 +40,14 @@ const badges = [
         color: "primary",
         title: "Web",
         description:
-            "I have experience with most of popular web development tools, frontend and backend. React and Vue are my bread and butter but I'm always trying out and learning new tools.",
+            "I have experience with most popular web development tools. React and Vue are my bread and butter but I'm always trying out and learning new things.",
     },
     {
         icon: <DatabaseIcon className="icon" />,
         color: "secondary",
         title: "Data",
         description:
-            "Having a background in Business Intelligence I'm intimately familiar with most products related to data storage, transformation and visualisation.",
+            "Having a background in Business Intelligence I'm very familiar with most products related to data storage, transformation and visualisation.",
     },
     {
         icon: <CogIcon className="icon" />,

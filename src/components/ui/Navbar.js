@@ -119,11 +119,9 @@ const Nav = styled.nav`
         border-bottom: 1px solid #dedede;
 
         .navbar-links {
-    
             .navbar-item {
                 margin-left: ${props => props.theme.spacing.m};
 
-    
                 &:hover {
                     border-bottom: 2px solid ${props => props.theme.color.fontDark};
                 }
@@ -133,32 +131,29 @@ const Nav = styled.nav`
         .navbar-links {
             order: 2;
         }
-    
+
         .navbar-logo {
             order: 1;
         }
     }
 
-    @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
+    /* @media (min-width: ${props => props.theme.breakpoint.tablet}px) {
 
-    }
+    } */
 
     @media (min-width: ${props => props.theme.breakpoint.desktop}px) {
-
-
         .content {
             max-width: 1200px;
         }
 
-
-        .navbar-links {
-
-            .navbar-item {
-                    margin-left: ${props => props.theme.spacing.xl};
+        .navbar-menu {
+            .navbar-links {
+                .navbar-item {
+                    margin-left: ${props => props.theme.spacing.l};
                 }
+            }
         }
-    
-
+    }
 `;
 
 const NavOffset = styled.div`

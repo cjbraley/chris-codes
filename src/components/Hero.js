@@ -86,17 +86,22 @@ const Wrapper = styled.div`
                 gap: ${props => props.theme.spacing.s};
 
                 .icon-container{
-                    
+
+                    /* height: ${props => props.theme.spacing.l}; */
                     display: flex;
                     gap: ${props => props.theme.spacing.m};
                     
-                    .icon {
+                    a {
                         height: ${props => props.theme.spacing.l};
+
+                        .icon {
+                            height: 100%;
+                        }
     
                         &:hover {
                             opacity: 0.7;
                         }
-                }
+                    }
 
                 }
             }

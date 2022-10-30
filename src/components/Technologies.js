@@ -76,20 +76,20 @@ const Technologies = () => {
                 <AnimateIn>
                     <div className="badge-container">
                         {badges.map((badge, i) => (
-                            <div
+                            <button
                                 key={i}
                                 className={`badge-box  ${activeBadgeIndex === i ? "active" : ""}`}
                                 onClick={() => setActiveBadgeIndex(i)}
                                 onKeyDown={() => setActiveBadgeIndex(i)}
                                 tabIndex="0"
-                                role="button"
+                                aria-label={badges[activeBadgeIndex].title}
                             >
                                 <div className={`badge badge--${badge.color}`}>{badge.icon}</div>
-                            </div>
+                            </button>
                         ))}
                     </div>
                     <div className="description-container">
-                        <h5 className="group-title">{badges[activeBadgeIndex].title}</h5>
+                        <h3 className="group-title">{badges[activeBadgeIndex].title}</h3>
                         <p className="group-description">{badges[activeBadgeIndex].description}</p>
                     </div>
                     <div className={`rect rect--${badges[activeBadgeIndex].color}`} />

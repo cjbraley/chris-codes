@@ -16,7 +16,13 @@ const Seo = ({
         <Wrapper color={color}>
             <div className="container">
                 <div className="header">
-                    <a href={link} target="_blank" rel="noreferrer" className="header__link">
+                    <a
+                        href={link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="header__link"
+                        aria-label={`Visit ${company} site.`}
+                    >
                         <Logo className="logo" />
                     </a>
                     <div className="header__text">
@@ -27,7 +33,7 @@ const Seo = ({
                 <p className="experience-description">{description}</p>
                 {responsibilities.length > 0 && (
                     <div>
-                        <h5 className="sub-header">Key Responsibilities</h5>
+                        <h3 className="sub-header">Key Responsibilities</h3>
                         <ul className="list">
                             {responsibilities.map((item, i) => (
                                 <li key={i}>
@@ -39,7 +45,7 @@ const Seo = ({
                 )}
                 {technologies.length > 0 && (
                     <div>
-                        <h5 className="sub-header">Primary Technologies</h5>
+                        <h3 className="sub-header">Primary Technologies</h3>
                         <div className="icon-container">
                             {technologies.map((Icon, i) => (
                                 <Icon key={i} className="icon" />

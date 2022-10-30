@@ -60,6 +60,7 @@ const Menu = ({ showMenu, setShowMenu }) => {
                                                 to={to}
                                                 onClick={() => setShowMenu(false)}
                                                 className="navbar-item"
+                                                tabIndex={showMenu ? 0 : -1}
                                             >
                                                 {name}
                                             </Link>
@@ -71,7 +72,7 @@ const Menu = ({ showMenu, setShowMenu }) => {
                         <div className="rect rect-3"></div>
                         <div className="rect rect-4"></div>
                     </div>
-                    <Footer />
+                    <Footer visible={showMenu} />
                 </div>
             </div>
         </Wrapper>

@@ -89,17 +89,17 @@ const Global = createGlobalStyle`
     }
 
     h3 {
-        font-family: ${props => props.theme.font.family.primary}, sans-serif;
+        font-family: ${props => props.theme.font.family.secondary}, sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: ${props => props.theme.font.size.mobile.xl};
+        font-size: ${props => props.theme.font.size.mobile.m};
     }
 
-    h4{
-        font-family: ${props => props.theme.font.family.primary}, sans-serif;
+    /* h4{
+        font-family: ${props => props.theme.font.family.secondary}, sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: ${props => props.theme.font.size.mobile.l};
+        font-size: ${props => props.theme.font.size.mobile.m};
     }
 
     h5{
@@ -110,11 +110,11 @@ const Global = createGlobalStyle`
     }
 
     h6{
-        font-family: ${props => props.theme.font.family.primary}, sans-serif;
+        font-family: ${props => props.theme.font.family.secondary}, sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: ${props => props.theme.font.size.mobile.s};
-    }
+    } */
 
     
     p {
@@ -257,20 +257,20 @@ const Global = createGlobalStyle`
         }
 
         h3 {
-            font-size: ${props => props.theme.font.size.desktop.xl};
+            font-size: ${props => props.theme.font.size.desktop.m};
         }
 
-        h4{
-            font-size: ${props => props.theme.font.size.desktop.l};
+        /* h4{
+            font-size:  ${props => props.theme.font.size.desktop.m};
         }
 
         h5{
-            font-size: 1.125rem;
+            font-size: ${props => props.theme.font.size.desktop.m};
         }
 
         h6{
             font-size: ${props => props.theme.font.size.desktop.s};
-        }
+        } */
 
         
         p {

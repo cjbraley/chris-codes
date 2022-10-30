@@ -70,6 +70,7 @@ const experiences = [
         time: "2020-Current",
         Logo: Westpac,
         company: "Westpac",
+        link: "https://www.westpac.com.au/about-westpac/global-locations/westpac-australia",
         position: "Senior Engineer",
         description:
             "I am currently with Westpac's Institutional Bank working on their Qlik-based data analytics platform which uses data to support risk management activities. My focus is on developing Qlik Sense dashboards that support the daily trading activity which limits the Bank’s exposure to financial risk.",

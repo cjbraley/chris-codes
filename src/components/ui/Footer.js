@@ -11,19 +11,20 @@ import GithubIcon from "../../assets/icons/github-outline.svg";
 import EmailIcon from "../../assets/icons/email.svg";
 import CaretIcon from "../../assets/icons/caret-up.svg";
 
-const Footer = () => {
+const Footer = ({ visible = true }) => {
     const { width } = useWindowSize();
     const theme = useTheme();
+
     return (
         <Wrapper>
             <div className="content">
                 {width >= theme.breakpoint.desktop && (
-                    <Link className="logo" to="/">
+                    <Link className="logo" to="/" tabIndex={visible ? 0 : -1}>
                         <Logo alt />
                     </Link>
                 )}
                 {width >= theme.breakpoint.desktop && (
-                    <Link to="/">
+                    <Link to="/" tabIndex={visible ? 0 : -1}>
                         <div className="return-circle">
                             <CaretIcon className="caret" />
                         </div>
@@ -35,16 +36,25 @@ const Footer = () => {
                             href="https://www.linkedin.com/in/christopher-b-913439103/"
                             target="_blank"
                             rel="noreferrer"
+                            tabIndex={visible ? 0 : -1}
                         >
-                            <LinkedInIcon className="icon" />
+                            <LinkedInIcon className="icon" aria-label="My LinkedIn profile" />
                         </a>
-                        <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
+                        <a
+                            href="https://github.com/cjbraley"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="My Github profile"
+                            tabIndex={visible ? 0 : -1}
+                        >
                             <GithubIcon className="icon" />
                         </a>
                         <a
                             href="mailto:cbraley@protonmail.com"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="Send me an email"
+                            tabIndex={visible ? 0 : -1}
                         >
                             <EmailIcon className="icon icon--email" />
                         </a>

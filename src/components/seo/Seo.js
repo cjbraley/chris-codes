@@ -31,10 +31,14 @@ const Seo = props => {
         url: `${meta.siteUrl}${pathname}`,
     };
 
+    console.log(props.description);
+
     return (
         <Helmet title={seo.title} description={seo.description}>
             <html lang="en" />
             <meta name="image" content={seo.image} />
+            <meta name="title" content={seo.title} />
+            <meta name="description" content={seo.description} />
 
             <meta property="og:title" content={seo.title} />
             <meta property="og:description" content={seo.description} />

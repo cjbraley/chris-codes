@@ -21,17 +21,24 @@ const Project = ({
 
     return (
         <Wrapper className={`${alignment}`}>
-            <a href={projectLink} target="_blank" rel="noreferrer" className="logo logo--desktop">
+            <a
+                href={projectLink}
+                target="_blank"
+                rel="noreferrer"
+                className="logo logo--desktop"
+                aria-label="Visit the project"
+            >
                 <Logo className="nute" style={logoStyles} />
             </a>
             <div className="description">
                 <div className="flex">
-                    <h5 className="title">{title}</h5>
+                    <h3 className="title">{title}</h3>
                     <a
                         href={projectLink}
                         target="_blank"
                         rel="noreferrer"
                         className="logo logo--mobile"
+                        aria-label="Visit the project"
                     >
                         <Logo style={logoStyles} />
                     </a>
@@ -60,10 +67,20 @@ const Project = ({
             </Carousel>
 
             <div className="links">
-                <a href={githubLink} target="_blank" rel="noreferrer">
+                <a
+                    href={githubLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Visit the Github repo"
+                >
                     <GithubIcon className="icon" />
                 </a>
-                <a href={projectLink} target="_blank" rel="noreferrer">
+                <a
+                    href={projectLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Visit the project"
+                >
                     <LinkIcon className="icon" />
                 </a>
             </div>

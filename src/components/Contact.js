@@ -24,9 +24,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <Button color="tertiary" transparent>
-                            Get in Touch
-                        </Button>
+                        <Button color="tertiary">Get in Touch</Button>
                     </a>
                 </div>
             </AnimateIn>

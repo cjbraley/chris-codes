@@ -56,6 +56,7 @@ const Navbar = () => {
                                         key={item.name}
                                         className="navbar-item text--link"
                                         to={item.to}
+                                        aria-label={item.name}
                                     >
                                         {item.name}
                                     </Link>
@@ -63,12 +64,7 @@ const Navbar = () => {
                             </div>
                         )}
                         <div className="navbar-logo">
-                            {/* {width >= theme.breakpoint.desktop && (
-                            <a href={ResumeFile} download>
-                                <Button transparent>Resume</Button>
-                            </a>
-                        )} */}
-                            <Link to="/">
+                            <Link to="/" aria-label="home">
                                 <Logo />
                             </Link>
                         </div>

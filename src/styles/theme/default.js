@@ -31,7 +31,7 @@ const theme = {
         tertiaryDark: "#D86854",
 
         fontDark: "#343D46",
-        fontMedium: "#A2A8B5",
+        fontMedium: "#828895",
         fontSubtle: "#A2A8B5",
         fontLight: "#EEFFFF",
     },

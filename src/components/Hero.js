@@ -27,10 +27,16 @@ const Hero = () => {
                                 href="https://www.linkedin.com/in/christopher-b-913439103/"
                                 target="_blank"
                                 rel="noreferrer"
+                                aria-label="My LinkedIn profile"
                             >
                                 <LinkedInIcon className="icon" />
                             </a>
-                            <a href="https://github.com/cjbraley" target="_blank" rel="noreferrer">
+                            <a
+                                href="https://github.com/cjbraley"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label="My Github profile"
+                            >
                                 <GithubIcon className="icon" />
                             </a>
                         </div>
